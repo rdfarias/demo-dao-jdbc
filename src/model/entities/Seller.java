@@ -72,11 +72,8 @@ public class Seller implements Serializable {
 	public Department getDepartment() {
 		return department;
 	}
-
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
 	
+
 	
 	@Override
 	public int hashCode() {
@@ -92,12 +89,24 @@ public class Seller implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Seller other = (Seller) obj;
-		return Objects.equals(id, other.id);
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 
 	@Override
 	public String toString() {
 		return "Seller [id=" + id + ", name=" + name + ", email=" + email + ", birthDate=" + birthDate + ", baseSalary="
 				+ baseSalary + ", department=" + department + "]";
-	}	
+	}
+
+	public void setDepartment(Department dep) {
+		this.department = dep;
+		
+	}
+
+	
 }
